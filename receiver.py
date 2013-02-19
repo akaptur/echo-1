@@ -3,11 +3,11 @@ MAX = 1024      # maximum number of bytes to receive at a time
 
 # The Receiver class manages receiving messages over a socket
 class Receiver:
-    def __init__(self, socket):
+    def __init__(self, sock):
         # The socket instance variable stores the socket associated with 
         # the receiver which is passed in when the object is created and is
         # presumed to be connected
-        self.socket = socket
+        self.sock = sock
 
         # The open instance variable is used to track when the other side of 
         # the connection closes  
