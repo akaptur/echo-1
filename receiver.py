@@ -18,10 +18,6 @@ class Receiver:
         # calls to recv_message()
         self.buffer = []
 
-    # is_open() returns true until the other side of the socket closes
-    def is_open(self):
-        return self.open
-
     # recv_message() returns all bytes received until an end of line character
     # is encountered.  Any further bytes that have been received are held in
     # a buffer to be used in the next call to recv_message
