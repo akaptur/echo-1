@@ -27,7 +27,7 @@ except socket.error as err:
     sys.exit(1)
 
 # Set up the socket to listen for connection requests
-server.listen(1)
+server.listen(5)
 print "Listening at {0}".format(str(server.getsockname()))
 
 while True:
