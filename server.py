@@ -9,14 +9,14 @@ if len(sys.argv) > 2:
     print >> sys.stderr, "usage: {0} [interface]\n".format(sys.argv[0])
     sys.exit(1)
 
+# If the interface isn't specified, use the empty string for INADDR_ANY
+interface = sys.argv[1] if len(sys.argv) == 2 else ''
+
 print "Blocking TCP Echo Server"
 
 # Create a tcp socket to listen for connection requests
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-
-# If the interface isn't specified, use the empty string for INADDR_ANY
-interface = sys.argv[1] if len(sys.argv) == 2 else ''
 
 # Bind the socket to the interface
 try:
