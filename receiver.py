@@ -36,7 +36,7 @@ class Receiver:
         # socket is closed
         while self.open and eol_pos == -1:
             # Read up to MAX characters from the socket
-            msg_chunk = self.socket.recv(MAX)
+            msg_chunk = self.sock.recv(MAX)
 
             if not msg_chunk:
                 # When recv() on the socket returns the empty string, it 
