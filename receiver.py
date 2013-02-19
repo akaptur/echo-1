@@ -22,23 +22,23 @@ class Receiver:
         """recv_message() returns all bytes received until an end of line character
         is encountered.  Any further bytes that have been received are held in
         a buffer to be used in the next call to recv_message"""
-        # Initialize the data variable to any excess bytes that were received
+        # Initialize the msg_chunk variable to any excess bytes that were received
         # on the last call to recv_message()
         if len(self.buffer) == 1:
-            data = self.buffer[0]
+            msg_chunk = self.buffer[0]
         else:
-            data = ""
+            msg_chunk = ""
             
-        # Initialize the end of line position based on the contents of data
-        eol_pos = data.find(EOL)
+        # Initialize the end of line position based on the contents of msg_chunk
+        eol_pos = msg_chunk.find(EOL)
         
         # Keep reading the socket until an end of line is encountered or the
         # socket is closed
         while self.open and eol_pos == -1:
             # Read up to MAX characters from the socket
-            data = self.socket.recv(MAX)
+            msg_chunk = self.socket.recv(MAX)
 
-            if not data:
+            if not msg_chunk:
                 # When recv() on the socket returns the empty string, it 
                 # indicates that the other end has closed the socket so add 
                 # an end of line to the buffer so that the echoed message can 
@@ -48,8 +48,8 @@ class Receiver:
             else:
                 # Append the newest chunk of data to the buffer and look
                 # for an end of line in the data
-                self.buffer.append(data)
-                eol_pos = data.find(EOL)
+                self.buffer.append(msg_chunk)
+                eol_pos = msg_chunk.find(EOL)
 
         # The last chunk of data in the buffer contains an end of line
         # character but there may be additional bytes after the end of line
