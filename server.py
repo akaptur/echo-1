@@ -42,7 +42,7 @@ while True:
 
     # Until the other end closes the socket, keep receiving messages
     # and echoing them back
-    while rcvr.is_open():
+    while rcvr.open:
         message = rcvr.recv_message()
         print "Received {0}".format(message),
         connection.sendall(message)

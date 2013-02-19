@@ -29,7 +29,7 @@ except socket.error as err:
 # hasn't closed the socket, read input from the user until they enter a
 # period, send it to the server, and try to receive the echo
 rcvr = receiver.Receiver(tcp_socket)
-while rcvr.is_open():
+while rcvr.open:
     message = raw_input()
     if message != ".":
         tcp_socket.sendall(message+"\n")
