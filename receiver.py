@@ -18,10 +18,10 @@ class Receiver:
         # calls to recv_message()
         self.buffer = []
 
-    # recv_message() returns all bytes received until an end of line character
-    # is encountered.  Any further bytes that have been received are held in
-    # a buffer to be used in the next call to recv_message
     def recv_message(self):
+        """recv_message() returns all bytes received until an end of line character
+        is encountered.  Any further bytes that have been received are held in
+        a buffer to be used in the next call to recv_message"""
         # Initialize the data variable to any excess bytes that were received
         # on the last call to recv_message()
         if len(self.buffer) == 1:
